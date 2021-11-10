@@ -1,10 +1,29 @@
 {
 	"compiler": {
-		"version": "0.8.9+commit.e5eed63a"
+		"version": "0.8.10+commit.fc410830"
 	},
 	"language": "Solidity",
 	"output": {
-		"abi": [],
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
 		"devdoc": {
 			"kind": "dev",
 			"methods": {},
@@ -33,11 +52,11 @@
 	},
 	"sources": {
 		"AuctionListing.sol": {
-			"keccak256": "0x64e61c5f108bf761345fb9a6cc68734d07289779725e783b700cae8c0b50a6f0",
+			"keccak256": "0xc608dda1a554c79eccb1f262302db0e19375715c15dc6a775a7b21e50aa68ac0",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://d77560074644f9a3c3a133b27a1e8b8df24c4e36b32fb20499df2bbd94623727",
-				"dweb:/ipfs/QmPmMB4qTPvkc3i6CvqEetfkSnEg78ia1UTe5d4b7SWwVu"
+				"bzz-raw://86eb5a497461c9d7c09124e89a0bc5239a828bd5c0d9ec4fdfc47ea8de1ec8e6",
+				"dweb:/ipfs/QmRykVkrdn3xu5YZHHHxP18mQfNa3Jgfo831ekAT13mrf6"
 			]
 		}
 	},
