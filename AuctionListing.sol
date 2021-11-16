@@ -9,6 +9,7 @@ interface IERC721 {
 
 contract AuctionListing{
     event Start();
+    event Bid(address sender, uint amount);
     event End(address winner, uint amount);
 
     address payable public owner;
@@ -52,7 +53,11 @@ contract AuctionListing{
     }
     
     function bid() public payable auctionActive() validAddress(){
+        require (msg.value > currentBid, "Your bid does not exceed current bid.");
+        currentBidder = msg.sender;
+        currentBid = msg.value;
         
+        emit Bid (msg.sender, msg.value);
     }
     
     function startAuction () public onlyOwner (){

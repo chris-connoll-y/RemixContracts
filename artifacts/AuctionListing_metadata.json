@@ -47,6 +47,25 @@
 					{
 						"indexed": false,
 						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Bid",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
 						"name": "winner",
 						"type": "address"
 					},
@@ -207,11 +226,11 @@
 	},
 	"sources": {
 		"AuctionListing.sol": {
-			"keccak256": "0x4d421d3d8fb86e5457e7c72c992393577750488733d4dc2d9ff4e0127c011160",
+			"keccak256": "0x24646b038afa074c8fadbdc47d7e358414c160d8da7a8f3a94bdec4d81b520a9",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://c5d629be78424219b0e15fc571646187a596e2c5cf8f409262162e31320d84da",
-				"dweb:/ipfs/QmQRQ3fBtYLswDujQWpsKJzkAtNf21FJwnAsgFXBMTQmZz"
+				"bzz-raw://b082cf1d0b240a7f625b38e3148f675130cc2119e166b0b7c7cd6a66f669f453",
+				"dweb:/ipfs/QmbRnsszhR89N874JxQw4z6Dk89Z3J8B7YBWHLLd31AB2t"
 			]
 		}
 	},
