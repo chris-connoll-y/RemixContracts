@@ -15,29 +15,51 @@ contract AuctionListing{
     IERC721 public nft;
     uint256 public nftID;
     bool public isActive;
+    bool public hasStarted;
     uint256 endBlock;
     uint256 timeLimit;
-    uint256 private priceIncrement;
+    
     address private currentBidder;
+    uint256 public shopPrice;
+    
+    
+    /*
+        stored as price * 1,000,000
+    */
+    uint256 private priceIncrement;
     uint256 public currentBid;
     
     
     
     
-    constructor (address _nft, uint256 _nftID, uint256 _startingBid, uint256 _timeLimit){
+    constructor (address _nft, uint256 _nftID, uint256 _startingBid, uint256 _timeLimit, uint256 _shopPrice, uint256 _priceIncrement){
         owner = payable(msg.sender);
         timeLimit = _timeLimit;
+        shopPrice = _shopPrice;
         nft = IERC721(_nft);
         nftID = _nftID;
+         if (_startingBid >= 0) {
+            currentBid = _startingBid;
+        } else {
+            currentBid = 1000000;
+        }
+
+        if (priceIncrement > 0) {
+            priceIncrement = _priceIncrement;
+        } else {
+            priceIncrement = 500000;
+        }
     }
     
-    function bid() public payable validAddress(){
+    function bid() public payable auctionActive() validAddress(){
         
     }
     
     function startAuction () public onlyOwner (){
         uint256 startBlock = block.number;
-        uint256 endBlock = startBlock + timeLimit;
+        endBlock = startBlock + timeLimit;
+        isActive = true;
+        hasStarted = true;
     }
     
     modifier onlyOwner(){
@@ -46,11 +68,12 @@ contract AuctionListing{
         _;
     }
     
-    modifier hasNotEnded (){
+    
+    modifier auctionActive (){
         if (block.number > endBlock){
             end();
         }
-        require (isActive == true, "Auction has ended.");
+        require (isActive == true && hasStarted == true, "Auction has already ended or has not begun.");
         _;
     }
     

@@ -26,6 +26,16 @@
 						"internalType": "uint256",
 						"name": "_timeLimit",
 						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_shopPrice",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_priceIncrement",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "nonpayable",
@@ -85,6 +95,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "hasStarted",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "isActive",
 				"outputs": [
 					{
@@ -137,6 +160,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "shopPrice",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "startAuction",
 				"outputs": [],
 				"stateMutability": "nonpayable",
@@ -171,11 +207,11 @@
 	},
 	"sources": {
 		"AuctionListing.sol": {
-			"keccak256": "0x43f14efe8d98490d44e674d960f29f8eb2f1a489f6915f8ebe4076665059f68c",
+			"keccak256": "0x4d421d3d8fb86e5457e7c72c992393577750488733d4dc2d9ff4e0127c011160",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://82d16ccb14904b434b783929fcef059109ba68bc1aedaab8775f47dedd5fc65a",
-				"dweb:/ipfs/QmPNkRxJs4iRsZubRiCg3RbTy9CphjkVR6hmfBscTYmzcz"
+				"bzz-raw://c5d629be78424219b0e15fc571646187a596e2c5cf8f409262162e31320d84da",
+				"dweb:/ipfs/QmQRQ3fBtYLswDujQWpsKJzkAtNf21FJwnAsgFXBMTQmZz"
 			]
 		}
 	},
