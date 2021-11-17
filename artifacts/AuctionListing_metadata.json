@@ -240,11 +240,11 @@
 	},
 	"sources": {
 		"AuctionListing.sol": {
-			"keccak256": "0x484c1e1098528f04c033aaf36e852c2a1bbd20ead4647391ad2a7e18ed8f0594",
+			"keccak256": "0x77141199db1e6ad7e2444b78d1fbb1edd85362877d1b31a371c08e955a39bfc4",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://6efabae29aef51f87639bfcbbc5cdb235af21d57285ef72f0b891fe6f93c8a9e",
-				"dweb:/ipfs/QmRrjzqSgdzVCqecph6fduFLei4XTnXBcAvfGxVJhAKFxD"
+				"bzz-raw://6f44af933b47a41a36e397185cf2108e6d1d0343be354e6b3c2b9ab5f0b50ca5",
+				"dweb:/ipfs/QmQyq2eFd8EFKPrjWXT3KzXK5nnqYQJthfCuo8CFAJ8b17"
 			]
 		},
 		"https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/token/ERC721/IERC721.sol": {

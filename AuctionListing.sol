@@ -51,7 +51,7 @@ contract AuctionListing  {
     }
     
     function bid() public payable auctionActive() validAddress(){
-        require (msg.value*1000000> currentBid, "Your bid does not exceed current bid.");
+        require (msg.value> currentBid, "Your bid does not exceed current bid.");
         currentBidder = msg.sender;
         currentBid = msg.value;
         
@@ -91,12 +91,12 @@ contract AuctionListing  {
         require(isActive == true, "Auction has already been ended");
         isActive = false;
         if (currentBidder != address(0)) {
-            nft.approve (currentBidder, nftID);
-            nft.transferFrom(address(this), currentBidder, nftID);
-            owner.transfer(currentBid);
+            //nft.approve (currentBidder, nftID);
+            nft.safeTransferFrom(address(this), currentBidder, nftID);
+            //owner.transfer(currentBid);
         } else {
-            nft.approve (owner, nftID);
-            nft.transferFrom(address(this),owner, nftID);
+            //nft.approve (owner, nftID);
+            nft.safeTransferFrom(address(this), owner, nftID);
         }
     
         emit End(currentBidder, currentBid);
