@@ -99,7 +99,7 @@
 				"inputs": [],
 				"name": "end",
 				"outputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -240,11 +240,11 @@
 	},
 	"sources": {
 		"AuctionListing.sol": {
-			"keccak256": "0xff835307a2475b897c4e92b259644089bfba80833becb0c0f16182d86defb8d1",
+			"keccak256": "0x484c1e1098528f04c033aaf36e852c2a1bbd20ead4647391ad2a7e18ed8f0594",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://f03a557836b8c9572ce903b5666753d444797c90f834b1080d0d036b29a9e9af",
-				"dweb:/ipfs/QmPaAxmbrSDxmDyxRMLdMPss59V1GP9WdZsBPFhaGMq5st"
+				"bzz-raw://6efabae29aef51f87639bfcbbc5cdb235af21d57285ef72f0b891fe6f93c8a9e",
+				"dweb:/ipfs/QmRrjzqSgdzVCqecph6fduFLei4XTnXBcAvfGxVJhAKFxD"
 			]
 		},
 		"https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/token/ERC721/IERC721.sol": {

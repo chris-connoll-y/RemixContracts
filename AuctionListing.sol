@@ -53,7 +53,7 @@ contract AuctionListing  {
     function bid() public payable auctionActive() validAddress(){
         require (msg.value*1000000> currentBid, "Your bid does not exceed current bid.");
         currentBidder = msg.sender;
-        currentBid = msg.value*1000000;
+        currentBid = msg.value;
         
         emit Bid (msg.sender, msg.value);
     }
@@ -87,7 +87,7 @@ contract AuctionListing  {
         nft = IERC721(newAddress);
     }
     
-    function end() public {
+    function end() public payable {
         require(isActive == true, "Auction has already been ended");
         isActive = false;
         if (currentBidder != address(0)) {
