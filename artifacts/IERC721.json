@@ -49,7 +49,7 @@
 		},
 		"gasEstimates": null,
 		"methodIdentifiers": {
-			"transfer(address,uint256)": "a9059cbb",
+			"approve(address,uint256)": "095ea7b3",
 			"transferFrom(address,address,uint256)": "23b872dd"
 		}
 	},
@@ -67,9 +67,9 @@
 					"type": "uint256"
 				}
 			],
-			"name": "transfer",
+			"name": "approve",
 			"outputs": [],
-			"stateMutability": "nonpayable",
+			"stateMutability": "payable",
 			"type": "function"
 		},
 		{
@@ -92,7 +92,7 @@
 			],
 			"name": "transferFrom",
 			"outputs": [],
-			"stateMutability": "nonpayable",
+			"stateMutability": "payable",
 			"type": "function"
 		}
 	]

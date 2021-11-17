@@ -8,23 +8,18 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "_nft",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_nftId",
+						"type": "uint256"
+					},
+					{
 						"internalType": "uint256",
 						"name": "_startingBid",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_timeLimit",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_shopPrice",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_priceIncrement",
 						"type": "uint256"
 					}
 				],
@@ -35,7 +30,7 @@
 				"anonymous": false,
 				"inputs": [
 					{
-						"indexed": false,
+						"indexed": true,
 						"internalType": "address",
 						"name": "sender",
 						"type": "address"
@@ -76,6 +71,25 @@
 				"type": "event"
 			},
 			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "bidder",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Withdraw",
+				"type": "event"
+			},
+			{
 				"inputs": [],
 				"name": "bid",
 				"outputs": [],
@@ -83,8 +97,14 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "currentBid",
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "bids",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -104,7 +124,20 @@
 			},
 			{
 				"inputs": [],
-				"name": "hasStarted",
+				"name": "endAt",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "ended",
 				"outputs": [
 					{
 						"internalType": "bool",
@@ -117,12 +150,25 @@
 			},
 			{
 				"inputs": [],
-				"name": "isActive",
+				"name": "highestBid",
 				"outputs": [
 					{
-						"internalType": "bool",
+						"internalType": "uint256",
 						"name": "",
-						"type": "bool"
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "highestBidder",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -143,7 +189,7 @@
 			},
 			{
 				"inputs": [],
-				"name": "nftID",
+				"name": "nftId",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -156,7 +202,7 @@
 			},
 			{
 				"inputs": [],
-				"name": "owner",
+				"name": "seller",
 				"outputs": [
 					{
 						"internalType": "address payable",
@@ -169,44 +215,27 @@
 			},
 			{
 				"inputs": [],
-				"name": "shopPrice",
+				"name": "start",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "started",
 				"outputs": [
 					{
-						"internalType": "uint256",
+						"internalType": "bool",
 						"name": "",
-						"type": "uint256"
+						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_nft",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_nftID",
-						"type": "uint256"
-					}
-				],
-				"name": "startAuction",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "newAddress",
-						"type": "address"
-					}
-				],
-				"name": "updateNFTAddress",
+				"inputs": [],
+				"name": "withdraw",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -225,7 +254,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"AuctionListing.sol": "AuctionListing"
+			"EnglishAuction.sol": "EnglishAuction"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -239,36 +268,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"AuctionListing.sol": {
-			"keccak256": "0xff835307a2475b897c4e92b259644089bfba80833becb0c0f16182d86defb8d1",
-			"license": "GPL-3.0",
-			"urls": [
-				"bzz-raw://f03a557836b8c9572ce903b5666753d444797c90f834b1080d0d036b29a9e9af",
-				"dweb:/ipfs/QmPaAxmbrSDxmDyxRMLdMPss59V1GP9WdZsBPFhaGMq5st"
-			]
-		},
-		"https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/token/ERC721/IERC721.sol": {
-			"keccak256": "0xc6aeacb58cdf0835859bc075ab5176346c88232649f8e69d1331601d285d0b11",
+		"EnglishAuction.sol": {
+			"keccak256": "0x3edcea0e41d9703e9de8179dde5b300c09cfd629e595416cc90a48d660af73c3",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://ed52ffb62caaaeac944b318964f5b06e2d4fe9c7cccebe6fe94e666951afe5a2",
-				"dweb:/ipfs/QmXBH6vmqEyf71sKkEe1q3TDJws94bu4SYTJV5V6fmx7h3"
-			]
-		},
-		"https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/token/ERC721/IERC721Receiver.sol": {
-			"keccak256": "0xc835ab6011f8a818b75d090149a1689ef6fa3ce6b880fe5c64465929abca33de",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://6ab4fb0c21e3f66d49d4c51c043d00491eb99dc2b1846870cb5d43f8c801f66a",
-				"dweb:/ipfs/QmVPU6gCSzGcZkwgmLGhE947MXH642PQWNgaTGevhhxcCt"
-			]
-		},
-		"https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/utils/introspection/IERC165.sol": {
-			"keccak256": "0xca6e686d3f19501229131c306da8b32cd888cbd3de3ee29036fb984228fedd7b",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://9f35d5d15a890b60f2be07aee3335868c45bc1355d03a53cb1796c4d374190ad",
-				"dweb:/ipfs/QmUM4K1WUr6Ut2Vjox6NFxT6TMun523TVV4eLZsoAonBRq"
+				"bzz-raw://a3e8f8abb39a895c39290f5b2bec725643b70847c7691215fd0e7091c7161e28",
+				"dweb:/ipfs/QmV8NKP24mFxyhQ9anzDLokRP3TwyfSMQvJqG1SmG5mpQK"
 			]
 		}
 	},

@@ -2,12 +2,11 @@
 
 pragma solidity >=0.8.9;
 
-interface IERC721 {
-    function transfer(address, uint) external;
-    function transferFrom(address,address, uint) external;
-}
+import "https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/token/ERC721/IERC721.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/token/ERC721/IERC721Receiver.sol";
 
-contract AuctionListing{
+
+contract AuctionListing  {
     event Start();
     event Bid(address sender, uint amount);
     event End(address winner, uint amount);
@@ -33,12 +32,11 @@ contract AuctionListing{
     
     
     
-    constructor (address _nft, uint256 _nftID, uint256 _startingBid, uint256 _timeLimit, uint256 _shopPrice, uint256 _priceIncrement){
+    constructor (uint256 _startingBid, uint256 _timeLimit, uint256 _shopPrice, uint256 _priceIncrement) {
         owner = payable(msg.sender);
         timeLimit = _timeLimit;
         shopPrice = _shopPrice;
-        nft = IERC721(_nft);
-        nftID = _nftID;
+        
          if (_startingBid >= 0) {
             currentBid = _startingBid;
         } else {
@@ -53,14 +51,17 @@ contract AuctionListing{
     }
     
     function bid() public payable auctionActive() validAddress(){
-        require (msg.value > currentBid, "Your bid does not exceed current bid.");
+        require (msg.value*1000000> currentBid, "Your bid does not exceed current bid.");
         currentBidder = msg.sender;
-        currentBid = msg.value;
+        currentBid = msg.value*1000000;
         
         emit Bid (msg.sender, msg.value);
     }
     
-    function startAuction () public onlyOwner (){
+    function startAuction (address _nft, uint256 _nftID) public onlyOwner (){
+        require (isActive == false, "Auction has already started.");
+        nft = IERC721(_nft);
+        nftID = _nftID;
         uint256 startBlock = block.number;
         endBlock = startBlock + timeLimit;
         isActive = true;
@@ -82,16 +83,22 @@ contract AuctionListing{
         _;
     }
     
+    function updateNFTAddress (address newAddress) public {
+        nft = IERC721(newAddress);
+    }
+    
     function end() public {
         require(isActive == true, "Auction has already been ended");
         isActive = false;
         if (currentBidder != address(0)) {
-            nft.transfer(currentBidder, nftID);
+            nft.approve (currentBidder, nftID);
+            nft.transferFrom(address(this), currentBidder, nftID);
             owner.transfer(currentBid);
         } else {
-            nft.transfer(owner, nftID);
+            nft.approve (owner, nftID);
+            nft.transferFrom(address(this),owner, nftID);
         }
-
+    
         emit End(currentBidder, currentBid);
     }
     

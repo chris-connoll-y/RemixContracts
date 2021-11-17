@@ -18,9 +18,9 @@
 						"type": "uint256"
 					}
 				],
-				"name": "transfer",
+				"name": "approve",
 				"outputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -43,7 +43,7 @@
 				],
 				"name": "transferFrom",
 				"outputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "payable",
 				"type": "function"
 			}
 		],
@@ -75,11 +75,11 @@
 	},
 	"sources": {
 		"AuctionListing.sol": {
-			"keccak256": "0x24646b038afa074c8fadbdc47d7e358414c160d8da7a8f3a94bdec4d81b520a9",
+			"keccak256": "0x342e016a50f9fa9d69fb90547c63456fb972e18f4da366dcb550b1784dcbe6b4",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://b082cf1d0b240a7f625b38e3148f675130cc2119e166b0b7c7cd6a66f669f453",
-				"dweb:/ipfs/QmbRnsszhR89N874JxQw4z6Dk89Z3J8B7YBWHLLd31AB2t"
+				"bzz-raw://66690e7752140816f3440da16a83fda14060e3ddeff37f80f28f76b405d5caea",
+				"dweb:/ipfs/QmPa7CMp6MfhFn8wTsQnK7fZj6fpAos6rcmyEoFSjLHGRb"
 			]
 		}
 	},
