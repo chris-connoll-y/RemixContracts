@@ -52,6 +52,12 @@
 			},
 			{
 				"anonymous": false,
+				"inputs": [],
+				"name": "DeleteListing",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
 				"inputs": [
 					{
 						"indexed": false,
@@ -67,6 +73,25 @@
 					}
 				],
 				"name": "End",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "buyer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Purchase",
 				"type": "event"
 			},
 			{
@@ -97,6 +122,13 @@
 			},
 			{
 				"inputs": [],
+				"name": "deleteListing",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "end",
 				"outputs": [],
 				"stateMutability": "payable",
@@ -104,7 +136,7 @@
 			},
 			{
 				"inputs": [],
-				"name": "hasStarted",
+				"name": "isAShop",
 				"outputs": [
 					{
 						"internalType": "bool",
@@ -169,6 +201,26 @@
 			},
 			{
 				"inputs": [],
+				"name": "priceIncrement",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "purchase",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "shopPrice",
 				"outputs": [
 					{
@@ -194,19 +246,6 @@
 					}
 				],
 				"name": "startAuction",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "newAddress",
-						"type": "address"
-					}
-				],
-				"name": "updateNFTAddress",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -240,11 +279,11 @@
 	},
 	"sources": {
 		"AuctionListing.sol": {
-			"keccak256": "0x77141199db1e6ad7e2444b78d1fbb1edd85362877d1b31a371c08e955a39bfc4",
+			"keccak256": "0xf5bc7745f64e2f830ddcb218aa239b31ba0106de02a9fba91e205750a4743716",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://6f44af933b47a41a36e397185cf2108e6d1d0343be354e6b3c2b9ab5f0b50ca5",
-				"dweb:/ipfs/QmQyq2eFd8EFKPrjWXT3KzXK5nnqYQJthfCuo8CFAJ8b17"
+				"bzz-raw://c3b554d53f0aab0977d20598834c9d3bbb9c8306067b68fd7cc73b397ce05446",
+				"dweb:/ipfs/QmbZ24Rg3YomEaczSjtybT2ggUaMp4TBaqKMmkT8wfPge2"
 			]
 		},
 		"https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/token/ERC721/IERC721.sol": {
