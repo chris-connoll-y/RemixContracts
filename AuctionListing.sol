@@ -4,6 +4,7 @@ pragma solidity >=0.8.9;
 
 import "https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/token/ERC721/IERC721.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/token/ERC721/IERC721Receiver.sol";
+import "/PoolBid.sol";
 
 
 contract AuctionListing  {
@@ -12,8 +13,10 @@ contract AuctionListing  {
     event Start();
     event DeleteListing();
     event Bid(address sender, uint256 amount);
+    event TurnToShop ();
     event Purchase (address buyer, uint256 amount);
     event End(address winner, uint256 amount);
+    
 
     address payable public owner;
     
@@ -81,6 +84,12 @@ contract AuctionListing  {
         emit Bid (msg.sender, msg.value);
     }
     
+    function addPoolBid (PoolBid newPoolBid) public{
+        require (newPoolBid.totalValue()>currentBid, "Pool bid total value not great enough");
+        currentBidder = address (newPoolBid);
+        currentBid = newPoolBid.totalValue();
+    }
+    
     function end() public payable onlyOwner() isNotAShop() {
         require(isActive == true, "Auction has already been ended");
         isActive = false;
@@ -90,8 +99,10 @@ contract AuctionListing  {
             emit End(currentBidder, currentBid);
         } else {
             isAShop = true;
+            emit TurnToShop ();
         }
     }
+    
     
     function purchase () public payable validAddress() auctionActive () {
         require (isAShop == true, "The listing needs to be a shop.");
@@ -101,16 +112,13 @@ contract AuctionListing  {
         isActive = false;
         emit End (msg.sender, msg.value);
     }
-    
     function deleteListing () public validAddress() onlyOwner() {
         require (isActive == true, "This shop has closed.");
         isActive = false;
         nft.safeTransferFrom(address(this), owner, nftID);
         emit DeleteListing();
-
     }
-    
-    
+
     modifier onlyOwner(){
         require(msg.sender == owner, "Not owner");
         _;
@@ -122,12 +130,10 @@ contract AuctionListing  {
         require (isActive == true, "Listing is not active.");
         _;
     }
-
     modifier isNotAShop() {
         require (isAShop ==false, "The auction listing has become a shop.");
         _;
     }
-    
     modifier validAddress() {
         require(msg.sender != address(0), "Not valid address");
         _;

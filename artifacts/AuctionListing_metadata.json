@@ -101,6 +101,25 @@
 				"type": "event"
 			},
 			{
+				"anonymous": false,
+				"inputs": [],
+				"name": "TurnToShop",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract PoolBid",
+						"name": "newPoolBid",
+						"type": "address"
+					}
+				],
+				"name": "addPoolBid",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "bid",
 				"outputs": [],
@@ -278,12 +297,20 @@
 		"remappings": []
 	},
 	"sources": {
-		"AuctionListing.sol": {
-			"keccak256": "0xf5bc7745f64e2f830ddcb218aa239b31ba0106de02a9fba91e205750a4743716",
+		"/PoolBid.sol": {
+			"keccak256": "0x1565ee411f8919442e5ef8855796cb2c38d563e08a55c68a1365616526998863",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://c3b554d53f0aab0977d20598834c9d3bbb9c8306067b68fd7cc73b397ce05446",
-				"dweb:/ipfs/QmbZ24Rg3YomEaczSjtybT2ggUaMp4TBaqKMmkT8wfPge2"
+				"bzz-raw://57f54335a2149bb030e45415db72484f78a511e67ee379813b9883bbca21ee50",
+				"dweb:/ipfs/QmTayZRQ1rEJxTfSuQXkJYUUCcidsVXVFEFqzWs3yLLW9B"
+			]
+		},
+		"AuctionListing.sol": {
+			"keccak256": "0x517cf20b55adb9a5aa69c3a9733f920d86004709638251ebad9a6b265c20584c",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://12194244b28e92ff61c0df741b2724b08f331962fcf1383279f800279d5087ed",
+				"dweb:/ipfs/QmcCWwfCNfwa9ZapjjQXHxfP7HiMNpBNoH1ctDMyW1wcYQ"
 			]
 		},
 		"https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/token/ERC721/IERC721.sol": {
